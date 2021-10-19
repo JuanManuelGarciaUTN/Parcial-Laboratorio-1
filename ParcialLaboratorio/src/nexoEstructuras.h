@@ -72,5 +72,9 @@ int ProcesarPedidoDeRecoleccion(ePedido listaPedidos[], int longitudPedidos, eCl
 /// @return int (-2)[el vector de cliente esta vacio] - (-1)[el usuario decidio no dar de baja el cliente] - [el indice en el vector del cliente que se dio de baja]
 int DarDeBajaCliente(eCliente listaClientes[], int longitudClientes, ePedido listaPedidos[], int longitudPedidos, eLocalidad listaLocalidades[], int longitudLocalidades);
 
+void DarBajaClienteConLocalidad(eCliente listaClientes[], int longitudClientes, int idLocalidad, ePedido pedidos[], int longitudPedidos);
 
+int ClienteConMasPedidosPendientes(eCliente clientes[], int longitudClientes, ePedido pedidos[], int longitudPedidos);
+
+int ClienteConMasPedidosCompletados(eCliente clientes[], int longitudClientes, ePedido pedidos[], int longitudPedidos);
 #endif /* NEXOESTRUCTURAS_H_ */

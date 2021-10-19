@@ -216,45 +216,77 @@ int main(void) {
 				break;
 
 			case 11:
-				respuesta = MostrarListaDePedidosProcesados(listaPedidos, CANTIDAD_MAX_PEDIDOS, listaClientes, CANTIDAD_MAX_CLIENTE);
-				switch(respuesta)
+				respuesta = ClienteConMasPedidosPendientes(listaClientes, CANTIDAD_MAX_CLIENTE, listaPedidos, CANTIDAD_MAX_PEDIDOS);
+
+				if(respuesta == -1)
 				{
-				case 1:
+					printf("LA LISTA DE CLIENTES ESTA VACIOA \n\n");
+				}
+				else
+				{
+					printf("El cliente con mas pedidos pendientes es: ");
+					MostrarCliente(listaClientes[respuesta], listaLocalidades, CANTIDAD_MAX_LOCALIDADES);
 					PresioneEnterParaContinuar();
 					system("cls");
-					break;
-
-				case 0:
-					system("cls");
-					printf("No se Puede Mostrar los Pedidos Procesados porque la Lista esta Vacia \n\n");
-					break;
 				}
 				break;
 
 			case 12:
-				respuesta = MostrarListaDePedidosProcesados(listaPedidos, CANTIDAD_MAX_PEDIDOS, listaClientes, CANTIDAD_MAX_CLIENTE);
+				respuesta = ClienteConMasPedidosCompletados(listaClientes, CANTIDAD_MAX_CLIENTE, listaPedidos, CANTIDAD_MAX_PEDIDOS);
+
+				if(respuesta == -1)
+				{
+					printf("LA LISTA DE CLIENTES ESTA VACIOA \n\n");
+				}
+				else
+				{
+					printf("El cliente con mas pedidos Completados es: ");
+					MostrarCliente(listaClientes[respuesta], listaLocalidades, CANTIDAD_MAX_LOCALIDADES);
+					PresioneEnterParaContinuar();
+					system("cls");
+				}
+				break;
+
+			case 13:
+				respuesta = BajaLocalidad(listaLocalidades, CANTIDAD_MAX_LOCALIDADES);
 				switch(respuesta)
 				{
 				case 1:
-					PresioneEnterParaContinuar();
+					printf("Se Cargo una nueva Localidad\n\n");
 					system("cls");
 					break;
 
 				case 0:
 					system("cls");
-					printf("No se Puede Mostrar los Pedidos Procesados porque la Lista esta Vacia \n\n");
+					printf("ERROR LISTA DE LOCALIDADES LLENA \n\n");
 					break;
 				}
 				break;
 
-			case 13:
+			case 14:
+				respuesta = AltaLocalidad(listaLocalidades, CANTIDAD_MAX_LOCALIDADES, &idNuevaLocalidades);
+				switch(respuesta)
+				{
+				case 1:
+					printf("Se Cargo una nueva Localidad\n\n");
+					system("cls");
+					break;
+
+				case 0:
+					system("cls");
+					printf("ERROR LISTA DE LOCALIDADES LLENA \n\n");
+					break;
+				}
+				break;
+
+			case 15:
 				system("cls");
 				printf("Gracias, Vuelva Pronto \n");
 				PresioneEnterParaContinuar();
 				break;
 		}
 
-	} while(opcionElejida != 13);
+	} while(opcionElejida != 15);
 
 	return EXIT_SUCCESS;
 }

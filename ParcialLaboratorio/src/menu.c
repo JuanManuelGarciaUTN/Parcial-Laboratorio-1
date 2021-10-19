@@ -24,7 +24,9 @@ void MostrarMenuPrincipal(void)
 			"	10 -> CONSULTAR Kilos de Polipropileno Reciclados Por Cliente \n"
 			"	11 -> CONSULTAR Cliente con más Pedidos Pendientes. \n"
 			"	12 -> CONSULTAR Cliente con más Pedidos Completados. \n"
-			"	13 -> SALIR del Programa \n\n");
+			"	13 -> ALTA Localidad. \n"
+			"	14 -> BAJA Localidad\n"
+			"	15 -> SALIR del Programa \n\n");
 }
 
 void PresioneEnterParaContinuar(void)

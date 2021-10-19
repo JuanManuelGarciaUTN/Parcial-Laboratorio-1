@@ -43,6 +43,8 @@ void InicializarTestingLocalidad(eLocalidad listaLocalidades[], int longitud, in
 /// @return int (1)[se cargo correctamente] - (0)[hubo un error]
 int AltaLocalidad(eLocalidad listaLocalidades[], int longitud, int* idNueva);
 
+int BajaLocalidad( eLocalidad listaLocalidades[], int longitudLocalidades);
+
 
 /// @brief Dada un idLocalidad busca en el vector y si la encuentra devuelve su indice en el mismo
 ///

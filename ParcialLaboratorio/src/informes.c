@@ -161,7 +161,7 @@ int MostrarCantidadPedidosPendientesEnUnaLocalidad(eCliente listaClientes[], int
 		MostrarListaLocalidades(listaLocalidades, longitudLocalidades);
 		while(1)
 		{
-			PedirEnteroMayorQue("Ingrese el ID de la localidad a contar cantidad de pedidos pendientes", "ERRO DATO INVALIDO\n", &localidadIngresada, 0);
+			PedirEnteroMayorQue("Ingrese el ID de la localidad a contar cantidad de pedidos pendientes: ", "ERROR DATO INVALIDO\n", &localidadIngresada, 0);
 			indexLocalidad = BuscarLocalidadPorId(listaLocalidades, longitudLocalidades, localidadIngresada);
 			if(indexLocalidad != -1)
 			{

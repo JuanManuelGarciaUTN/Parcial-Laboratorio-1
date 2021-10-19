@@ -45,6 +45,7 @@ void InicializarTestingClientes(eCliente listaClientes[], int longitud, int* idN
 }
 
 
+
 int BuscarClientePorId(eCliente listaClientes[], int longitud, int idBuscada)
 {
 	int indexCliente;

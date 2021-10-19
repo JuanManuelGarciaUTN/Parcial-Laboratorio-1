@@ -40,6 +40,33 @@ void InicializarTestingLocalidad(eLocalidad listaLocalidades[], int longitud, in
 	}
 }
 
+int BajaLocalidad( eLocalidad listaLocalidades[], int longitudLocalidades)
+{
+	int seDioDeBaja;
+	int idBaja;
+	int indexBaja;
+	seDioDeBaja = 0;
+
+	if(MostrarListaLocalidades(listaLocalidades, longitudLocalidades))
+	{
+		while(1)
+		{
+			PedirEnteroMayorQue("Ingrese el Id a dar de baja: ", "ERROR. SOLO ACEPTA ENTEROS POSITIVOS\n", &idBaja, 0);
+			indexBaja = BuscarLocalidadPorId(listaLocalidades, longitudLocalidades, idBaja);
+			if(indexBaja != -1)
+			{
+				break;
+			}
+			printf("ERROR ID INVALIDO\n");
+		}
+		BajaDeLocalidadEnIndice(listaLocalidades, indexBaja);
+
+	}
+
+
+	return seDioDeBaja;
+}
+
 int AltaLocalidad(eLocalidad listaLocalidades[], int longitud, int* idNueva)
 {
 	int seCargoCorrectamente;

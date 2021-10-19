@@ -264,3 +264,99 @@ int DarDeBajaCliente(eCliente listaClientes[], int longitudClientes, ePedido lis
 	return indexClienteBaja;
 }
 
+void DarBajaClienteConLocalidad(eCliente listaClientes[], int longitudClientes, int idLocalidad, ePedido pedidos[], int longitudPedidos)
+{
+	for(int i=0; i<longitudClientes; i++)
+		{
+			if(listaClientes[i].idLocalidad == idLocalidad)
+			{
+				listaClientes[i].estado = VACIO;
+				for(int j=0; i<longitudPedidos; j++)
+				{
+					if(pedidos[j].idCliente == listaClientes[i].idCliente)
+					{
+						pedidos[j].estado = SIN_CARCAR;
+					}
+				}
+			}
+		}
+}
+
+int ClienteConMasPedidosPendientes(eCliente clientes[], int longitudClientes, ePedido pedidos[], int longitudPedidos)
+{
+	int indexClienteMasPedidosPendientes;
+	int flagPrimer;
+	int cantidadActual;
+	int cantidadMaximo;
+	indexClienteMasPedidosPendientes = -1;
+	flagPrimer = 1;
+
+	cantidadActual = 0;
+
+	for(int i=0; i<longitudClientes; i++)
+	{
+		if(clientes[i].estado == CARGADO)
+		{
+			for(int j=0; j<longitudPedidos; j++)
+			{
+				if(pedidos[j].estado == PENDIENTE && pedidos[j].idCliente == clientes[i].idCliente)
+				{
+					cantidadActual ++;
+				}
+			}
+
+			if(cantidadActual > 0)
+			{
+				if(flagPrimer == 1 || cantidadActual > cantidadMaximo)
+				{
+					flagPrimer = 0;
+					cantidadMaximo = cantidadActual;
+					indexClienteMasPedidosPendientes = i;
+				}
+				cantidadActual = 0;
+			}
+		}
+	}
+
+	return indexClienteMasPedidosPendientes;
+}
+
+int ClienteConMasPedidosCompletados(eCliente clientes[], int longitudClientes, ePedido pedidos[], int longitudPedidos)
+{
+	int indexClienteMasPedidosCompletados;
+	int flagPrimer;
+	int cantidadActual;
+	int cantidadMaximo;
+	indexClienteMasPedidosCompletados = -1;
+	flagPrimer = 1;
+
+	cantidadActual = 0;
+
+	for(int i=0; i<longitudClientes; i++)
+	{
+		if(clientes[i].estado == CARGADO)
+		{
+			for(int j=0; j<longitudPedidos; j++)
+			{
+				if(pedidos[j].estado == COMPLETADO && pedidos[j].idCliente == clientes[i].idCliente)
+				{
+					cantidadActual ++;
+				}
+			}
+
+			if(cantidadActual > 0)
+			{
+				if(flagPrimer == 1 || cantidadActual > cantidadMaximo)
+				{
+					flagPrimer = 0;
+					cantidadMaximo = cantidadActual;
+					indexClienteMasPedidosCompletados = i;
+				}
+				cantidadActual = 0;
+			}
+		}
+	}
+
+	return indexClienteMasPedidosCompletados;
+}
+
